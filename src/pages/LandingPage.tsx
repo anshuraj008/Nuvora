@@ -53,10 +53,10 @@ export const LandingPage: React.FC = () => {
 
       {/* Hero Section */}
       <main className="relative z-10 w-full max-w-5xl mx-auto px-6 py-8 sm:py-14 text-center flex flex-col items-center justify-center my-auto">
-        {/* Glowing Announcement Pill */}
+        {/* Announcement Pill */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#ff385c]/10 border border-[#ff385c]/30 text-[#ff758c] text-xs font-semibold mb-6 shadow-sm shadow-[#ff385c]/10 animate-in fade-in duration-300">
           <Sparkles className="w-3.5 h-3.5 text-[#ff385c]" />
-          <span>The Verified Social Hub for University Students</span>
+          <span>Discover Your Campus Community & Vibes</span>
         </div>
 
         {/* Hero Headline */}
@@ -70,7 +70,7 @@ export const LandingPage: React.FC = () => {
         {/* Subtitle */}
         <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed mb-10">
           Connect with peers at your university, discover active clubs and study squads, and explore
-          local campus nightlife in four seamless onboarding steps.
+          local events in four quick onboarding steps.
         </p>
 
         {/* CTA Cluster */}
@@ -83,7 +83,7 @@ export const LandingPage: React.FC = () => {
             rightIcon={<ArrowRight className="w-5 h-5" />}
             className="shadow-xl shadow-[#ff385c]/30 text-base font-bold py-4"
           >
-            Start Student Onboarding
+            Get Started
           </Button>
 
           <Button
@@ -93,11 +93,11 @@ export const LandingPage: React.FC = () => {
             onClick={() => navigate('/terms')}
             className="text-sm font-semibold py-4"
           >
-            Read Safety Standards
+            Read Community Guidelines
           </Button>
         </div>
 
-        {/* Floating Social Proof / Value Cards */}
+        {/* Floating Value Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-4xl text-left">
           {/* Card 1 */}
           <div className="glass-card glass-card-interactive p-5 rounded-2xl flex flex-col justify-between space-y-4">
@@ -106,13 +106,13 @@ export const LandingPage: React.FC = () => {
                 <Shield className="w-5 h-5" />
               </div>
               <span className="text-[10px] uppercase font-bold tracking-wider text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
-                100% Verified
+                Email Verified
               </span>
             </div>
             <div>
-              <h3 className="text-sm font-bold text-white mb-1">Authenticated Students</h3>
+              <h3 className="text-sm font-bold text-white mb-1">Email Verification</h3>
               <p className="text-xs text-slate-400 leading-relaxed">
-                6-digit OTP verification ensures exclusive, safe campus network environments.
+                6-digit one-time code verification to confirm access to your email address.
               </p>
             </div>
           </div>

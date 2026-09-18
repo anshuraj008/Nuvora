@@ -141,10 +141,10 @@ export const Step1Identity: React.FC = () => {
         <form onSubmit={handleSubmit(onEmailSubmit)} className="space-y-6" noValidate>
           <div className="space-y-2">
             <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-              What's your student email?
+              What's your email address?
             </h3>
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-              We'll send a 6-digit one-time code to confirm your authentic university identity.
+              We'll send a 6-digit verification code to confirm access to your email.
             </p>
           </div>
 

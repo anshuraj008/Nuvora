@@ -45,15 +45,15 @@ export const SuccessPage: React.FC = () => {
 
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Onboarding Complete • Verified Member</span>
+            <span>Onboarding Complete</span>
           </div>
 
           <h1 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
             Welcome to Nuvora!
           </h1>
           <p className="text-xs sm:text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
-            Your university student identity pass has been verified and registered. You are ready to
-            connect with your campus community.
+            Your profile has been created successfully. You are ready to explore campus events and
+            connect with peers.
           </p>
         </div>
 
