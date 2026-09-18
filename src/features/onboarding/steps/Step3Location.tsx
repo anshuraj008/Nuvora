@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { ArrowRight, GraduationCap } from 'lucide-react';
 import { step3Schema, Step3FormData } from '../schemas';
 import { useOnboarding } from '../store/OnboardingContext';
-import { US_STATES, CITIES_BY_STATE } from '../data/locationData';
+import { INDIAN_STATES, CITIES_BY_STATE } from '../data/locationData';
 import { Select } from '../../../components/ui/Select';
 import { Button } from '../../../components/ui/Button';
 import { clsx } from 'clsx';
@@ -78,10 +78,10 @@ export const Step3Location: React.FC = () => {
 
         {/* State Selection */}
         <Select
-          label="State / Province"
-          placeholder="Select your State"
+          label="State / Union Territory"
+          placeholder="Select your State (e.g. Jharkhand, Delhi, West Bengal)"
           required
-          options={US_STATES}
+          options={INDIAN_STATES}
           error={errors.state?.message}
           {...register('state')}
         />
@@ -89,7 +89,7 @@ export const Step3Location: React.FC = () => {
         {/* Dependent City Selection */}
         <Select
           label="City / Metro Area"
-          placeholder={selectedState ? 'Select your City' : 'Please select a state first'}
+          placeholder={selectedState ? 'Select your City (e.g. Dumka, Durgapur, Kolkata)' : 'Please select a state first'}
           required
           disabled={!selectedState}
           options={availableCities.map((c) => ({ value: c.value, label: c.label }))}
@@ -103,7 +103,7 @@ export const Step3Location: React.FC = () => {
             htmlFor="college-input"
             className="block text-[11px] font-semibold uppercase tracking-wider text-slate-300"
           >
-            University / College (Optional)
+            University / College / Institute (Optional)
           </label>
 
           <div className="relative">
@@ -111,7 +111,7 @@ export const Step3Location: React.FC = () => {
               id="college-input"
               list="college-suggestions"
               type="text"
-              placeholder="e.g. UC Berkeley, NYU, Harvard..."
+              placeholder="e.g. BIT Mesra, IIT Delhi, SKMU Dumka, NIT Durgapur..."
               className={clsx(
                 'w-full bg-[#0a0e18] text-slate-100 placeholder-slate-500 rounded-xl px-4 py-3 text-sm transition-all duration-200 border touch-target shadow-inner',
                 'focus:outline-none focus:ring-2 focus:ring-[#ff385c]/30 focus:border-[#ff385c] focus:bg-[#0c1220] border-slate-800 hover:border-slate-700'

@@ -110,7 +110,7 @@ export const SuccessPage: React.FC = () => {
             <div className="flex items-center gap-2 text-slate-200">
               <MapPin className="w-3.5 h-3.5 text-[#ff385c] shrink-0" />
               <span className="font-medium">
-                {state.draft.city ? `${state.draft.city}, ${state.draft.state}` : 'San Francisco, CA'}
+                {state.draft.city ? `${state.draft.city}, ${state.draft.state}` : 'Kolkata, WB'}
               </span>
             </div>
 
