@@ -1,0 +1,160 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ArrowLeft, ArrowRight, ShieldCheck, FileCheck } from 'lucide-react';
+import { Button } from '../components/ui/Button';
+
+export const TermsPage: React.FC = () => {
+  const navigate = useNavigate();
+
+  return (
+    <div className="min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col justify-between">
+      {/* Header */}
+      <header className="sticky top-0 z-20 bg-[#0b0f19]/90 backdrop-blur-md border-b border-slate-800">
+        <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+          <button
+            type="button"
+            onClick={() => navigate(-1)}
+            aria-label="Go back to previous page"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors touch-target py-2"
+          >
+            <ArrowLeft className="w-4 h-4" /> Back
+          </button>
+
+          <div className="flex items-center space-x-2">
+            <div className="w-7 h-7 rounded-lg bg-brand-500 flex items-center justify-center">
+              <span className="font-extrabold text-white text-xs">N</span>
+            </div>
+            <span className="font-bold text-sm text-white">Nuvora Terms</span>
+          </div>
+
+          <Button
+            size="sm"
+            variant="primary"
+            onClick={() => navigate('/signup')}
+            rightIcon={<ArrowRight className="w-3.5 h-3.5" />}
+          >
+            Go to Signup
+          </Button>
+        </div>
+      </header>
+
+      {/* Main Content (Max-width tuned for 65-75 characters per line readability) */}
+      <main className="max-w-3xl mx-auto px-6 py-10 flex-1">
+        <div className="space-y-8">
+          <div className="border-b border-slate-800 pb-6">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-500/10 text-brand-400 text-xs font-semibold mb-3">
+              <ShieldCheck className="w-3.5 h-3.5" /> Legal & Safety Standards
+            </div>
+            <h1 className="text-3xl font-extrabold text-white tracking-tight">
+              Terms of Service & Community Policy
+            </h1>
+            <p className="text-xs text-slate-400 mt-2">
+              Effective date: January 1, 2026 • Last updated: September 2026
+            </p>
+          </div>
+
+          <section aria-labelledby="section-1" className="space-y-3">
+            <h2 id="section-1" className="text-xl font-bold text-white">
+              1. Acceptance of Terms & Eligibility
+            </h2>
+            <p className="text-sm leading-relaxed text-slate-300">
+              Welcome to Nuvora. By accessing, downloading, or registering an account on our
+              platform, you agree to enter into a legally binding agreement with Nuvora Inc.
+            </p>
+            <p className="text-sm leading-relaxed text-slate-300">
+              <strong>Age Requirement:</strong> You must be at least eighteen (18) years of age to
+              create an account or participate in Nuvora community activities. Registration by
+              minors is strictly prohibited and subject to immediate account termination.
+            </p>
+          </section>
+
+          <section aria-labelledby="section-2" className="space-y-3">
+            <h2 id="section-2" className="text-xl font-bold text-white">
+              2. Student Verification & Identity
+            </h2>
+            <p className="text-sm leading-relaxed text-slate-300">
+              Nuvora provides a campus network environment. You agree to provide accurate, current,
+              and complete information during registration, including your real name, valid email
+              address, and affiliated educational institution. Impersonation of students, faculty,
+              or staff is grounds for permanent exclusion.
+            </p>
+          </section>
+
+          <section aria-labelledby="section-3" className="space-y-3">
+            <h2 id="section-3" className="text-xl font-bold text-white">
+              3. Community Conduct Guidelines
+            </h2>
+            <p className="text-sm leading-relaxed text-slate-300">
+              Our mission is to foster respectful, inclusive, and positive campus connections. You
+              agree NOT to:
+            </p>
+            <ul className="list-disc pl-6 text-sm text-slate-300 space-y-1.5 leading-relaxed">
+              <li>Engage in bullying, stalking, harassment, or hate speech targeting any person.</li>
+              <li>Share explicit, non-consensual, violent, or illegal media.</li>
+              <li>Spam campus channels with commercial advertisements, bots, or pyramid schemes.</li>
+              <li>Circulate unauthorized academic dishonesty materials or breach university policies.</li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="section-4" id="privacy" className="space-y-3">
+            <h2 id="section-4" className="text-xl font-bold text-white">
+              4. Privacy & Data Handling
+            </h2>
+            <p className="text-sm leading-relaxed text-slate-300">
+              We respect your privacy. In this frontend demonstration environment, no personal data
+              is transmitted to external production servers. In production environments, your data
+              is encrypted at rest and in transit, and your exact GPS coordinates are never
+              disclosed to other users.
+            </p>
+          </section>
+
+          <section aria-labelledby="section-5" className="space-y-3">
+            <h2 id="section-5" className="text-xl font-bold text-white">
+              5. Account Deletion & Termination
+            </h2>
+            <p className="text-sm leading-relaxed text-slate-300">
+              You may terminate your Nuvora account at any time through your profile settings.
+              Upon termination, all associated personal draft profiles and preferences are purged
+              in accordance with our retention policy.
+            </p>
+          </section>
+        </div>
+
+        {/* Sticky-ready bottom action bar */}
+        <div className="mt-12 p-6 rounded-2xl bg-[#131926] border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <FileCheck className="w-6 h-6 text-brand-400 shrink-0" />
+            <div>
+              <p className="text-xs font-bold text-white">Ready to join your university community?</p>
+              <p className="text-[11px] text-slate-400">Takes less than 2 minutes to complete.</p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3 w-full sm:w-auto">
+            <Button
+              variant="secondary"
+              size="md"
+              onClick={() => navigate('/')}
+              className="flex-1 sm:flex-initial"
+            >
+              Return Home
+            </Button>
+            <Button
+              variant="primary"
+              size="md"
+              onClick={() => navigate('/signup')}
+              rightIcon={<ArrowRight className="w-4 h-4" />}
+              className="flex-1 sm:flex-initial"
+            >
+              Accept & Start
+            </Button>
+          </div>
+        </div>
+      </main>
+
+      <footer className="w-full max-w-4xl mx-auto px-6 py-6 border-t border-slate-800/60 text-center text-xs text-slate-500">
+        Nuvora Inc. • All rights reserved.
+      </footer>
+    </div>
+  );
+};
