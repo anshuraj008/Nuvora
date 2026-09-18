@@ -32,7 +32,7 @@ export const mockApi = {
     const normalized = email.trim().toLowerCase();
     if (normalized === DEMO_FAIL_EMAIL || normalized.startsWith('error@')) {
       throw new Error(
-        'Simulated network failure: Could not deliver verification code. (Demo failure for testing error retry)'
+        'Network error: Could not deliver verification code to this address. Please try again.'
       );
     }
 
@@ -52,7 +52,7 @@ export const mockApi = {
 
     if (code !== DEMO_VALID_OTP) {
       throw new Error(
-        `Invalid verification code entered. Please enter the demo code: ${DEMO_VALID_OTP}`
+        'Invalid or expired verification code entered. Please check the code and try again.'
       );
     }
 
@@ -75,7 +75,7 @@ export const mockApi = {
 
     if (payload.email.toLowerCase() === DEMO_SUBMIT_FAIL_EMAIL) {
       throw new Error(
-        'Simulated server error: Unable to create account right now. Please try again. (Demo submit failure trigger)'
+        'Unable to complete registration at this time. Please check your details and try again.'
       );
     }
 

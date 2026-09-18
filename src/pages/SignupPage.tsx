@@ -32,7 +32,7 @@ export const SignupPage: React.FC = () => {
 
       {/* Footer */}
       <footer className="w-full max-w-5xl mx-auto px-6 py-4 text-center text-xs text-slate-500 relative z-10">
-        Need help? Demo valid OTP code: <span className="text-slate-300 font-mono">123456</span>
+        © 2026 Nuvora Inc. • Verified Student Network • Encrypted & Secure
       </footer>
     </div>
   );

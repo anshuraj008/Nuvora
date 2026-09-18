@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Mail, ShieldCheck, ArrowRight, Edit2, Clock, Info } from 'lucide-react';
+import { Mail, ShieldCheck, ArrowRight, Edit2, Clock } from 'lucide-react';
 import { step1Schema, Step1FormData } from '../schemas';
 import { useOnboarding } from '../store/OnboardingContext';
-import { mockApi, DEMO_VALID_OTP, DEMO_FAIL_EMAIL } from '../mockApi';
+import { mockApi } from '../mockApi';
 import { Field } from '../../../components/ui/Field';
 import { Button } from '../../../components/ui/Button';
 import { OtpInput } from '../../../components/ui/OtpInput';
@@ -126,23 +126,10 @@ export const Step1Identity: React.FC = () => {
 
   return (
     <div className="w-full max-w-md mx-auto space-y-6">
-      {/* Demo testing banner hint */}
-      <div className="p-3.5 rounded-2xl bg-[#090d16]/90 border border-white/[0.08] text-xs text-slate-300 flex items-start gap-3 shadow-inner">
-        <Info className="w-4 h-4 text-[#ff758c] shrink-0 mt-0.5" aria-hidden="true" />
-        <div className="leading-relaxed">
-          <span className="font-semibold text-white">Demo Testing Note:</span> Valid OTP code is{' '}
-          <span className="font-mono bg-[#ff385c]/20 text-[#ff758c] px-1.5 py-0.5 rounded font-bold border border-[#ff385c]/30">
-            {DEMO_VALID_OTP}
-          </span>
-          . Use <span className="font-mono text-amber-300 underline">{DEMO_FAIL_EMAIL}</span> to
-          test simulated failure.
-        </div>
-      </div>
-
       {errorMsg && (
         <Toast
           type="error"
-          title="Verification Error"
+          title="Verification Notice"
           message={errorMsg}
           onClose={() => setErrorMsg(null)}
           onRetry={stepMode === 'email' ? handleSubmit(onEmailSubmit) : () => onOtpSubmit()}

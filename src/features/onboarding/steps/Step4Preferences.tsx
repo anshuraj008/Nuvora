@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Sparkles, Check, CheckCircle2, FileText, UserCheck, Eye } from 'lucide-react';
+import { Check, CheckCircle2, FileText, UserCheck, Eye } from 'lucide-react';
 import { step4Schema, Step4FormData } from '../schemas';
 import { useOnboarding } from '../store/OnboardingContext';
 import { POPULAR_VIBES } from '../data/locationData';
-import { mockApi, DEMO_SUBMIT_FAIL_EMAIL } from '../mockApi';
+import { mockApi } from '../mockApi';
 import { Button } from '../../../components/ui/Button';
 import { Toast } from '../../../components/ui/Toast';
 import { Modal } from '../../../components/ui/Modal';
@@ -77,16 +77,6 @@ export const Step4Preferences: React.FC = () => {
 
   return (
     <div className="w-full max-w-md mx-auto space-y-6">
-      {/* Demo helper */}
-      <div className="p-3.5 rounded-2xl bg-[#090d16]/90 border border-white/[0.08] text-xs text-slate-300 flex items-start gap-3 shadow-inner">
-        <Sparkles className="w-4 h-4 text-[#ff758c] shrink-0 mt-0.5" />
-        <div className="leading-relaxed">
-          <span className="font-semibold text-white">Final Review:</span> Pick 1 to 5 vibes.
-          Tip: Set email to <span className="font-mono text-amber-300 underline">{DEMO_SUBMIT_FAIL_EMAIL}</span>{' '}
-          to test simulated submission error retry.
-        </div>
-      </div>
-
       {errorMsg && (
         <Toast
           type="error"

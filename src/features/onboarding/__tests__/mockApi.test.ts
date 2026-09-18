@@ -12,7 +12,7 @@ describe('Mock API Service Contract', () => {
 
     it('rejects with simulated network failure for DEMO_FAIL_EMAIL trigger', async () => {
       await expect(mockApi.verifyEmail(DEMO_FAIL_EMAIL)).rejects.toThrow(
-        'Simulated network failure'
+        'Could not deliver verification code'
       );
     });
   });
@@ -25,7 +25,7 @@ describe('Mock API Service Contract', () => {
     });
 
     it('rejects invalid or wrong OTP codes', async () => {
-      await expect(mockApi.verifyOtp('000000')).rejects.toThrow('Invalid verification code');
+      await expect(mockApi.verifyOtp('000000')).rejects.toThrow('Invalid or expired verification code');
     });
   });
 
@@ -37,9 +37,9 @@ describe('Mock API Service Contract', () => {
       fullName: 'Alex Rivera',
       age: 22,
       pronouns: 'they/them',
-      state: 'CA',
-      city: 'berkeley',
-      college: 'UC Berkeley',
+      state: 'JH',
+      city: 'dumka',
+      college: 'Sido Kanhu Murmu University (SKMU)',
       bio: 'Ready to connect!',
       vibes: ['tech', 'coffee'],
       allowDiscovery: true,
@@ -58,7 +58,7 @@ describe('Mock API Service Contract', () => {
           ...mockDraft,
           email: DEMO_SUBMIT_FAIL_EMAIL,
         })
-      ).rejects.toThrow('Simulated server error');
+      ).rejects.toThrow('Unable to complete registration');
     });
   });
 });
