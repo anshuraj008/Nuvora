@@ -158,7 +158,7 @@ export const LandingPage: React.FC = () => {
       {/* Footer */}
       <footer className="relative z-10 w-full max-w-6xl mx-auto px-6 py-6 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
         <div>
-          <span>© 2026 Nuvora Inc. • Senior Frontend Architecture Replication.</span>
+          <span>© 2026 Nuvora Inc. All rights reserved.</span>
         </div>
 
         <div className="flex items-center space-x-6">
@@ -169,7 +169,7 @@ export const LandingPage: React.FC = () => {
             Privacy Policy
           </Link>
           <Link to="/signup" className="text-[#ff758c] hover:text-white font-semibold touch-target py-2">
-            Four-Step Wizard →
+            Join Nuvora →
           </Link>
         </div>
       </footer>

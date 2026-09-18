@@ -76,11 +76,11 @@ export const Step4Preferences: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto space-y-6">
+    <div className="w-full space-y-6">
       {errorMsg && (
         <Toast
           type="error"
-          title="Submission Failed"
+          title="Submission Notice"
           message={errorMsg}
           onClose={() => setErrorMsg(null)}
           onRetry={handleSubmit(onSubmit)}
@@ -89,19 +89,19 @@ export const Step4Preferences: React.FC = () => {
       )}
 
       {/* Review Snapshot Card */}
-      <div className="glass-card rounded-2xl p-4 space-y-3 border border-white/[0.08]">
-        <div className="flex items-center justify-between border-b border-white/[0.06] pb-2">
+      <div className="glass-card rounded-2xl p-4.5 space-y-3 border border-white/[0.08]">
+        <div className="flex items-center justify-between border-b border-white/[0.06] pb-2.5">
           <span className="text-[11px] font-bold uppercase tracking-wider text-[#ff758c] flex items-center gap-1.5">
             <UserCheck className="w-3.5 h-3.5" /> Verified Profile Snapshot
           </span>
-          <span className="text-xs text-slate-400 font-mono">
+          <span className="text-xs text-slate-300 font-mono font-medium">
             {state.draft.pronouns || 'Not specified'}
           </span>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 text-xs">
+        <div className="grid grid-cols-2 gap-4 text-xs">
           <div>
-            <span className="text-slate-400 block text-[10px] uppercase tracking-wider">
+            <span className="text-slate-400 block text-[10px] uppercase tracking-wider mb-0.5">
               Full Name & Age
             </span>
             <span className="font-bold text-white text-sm">
@@ -110,7 +110,7 @@ export const Step4Preferences: React.FC = () => {
           </div>
 
           <div>
-            <span className="text-slate-400 block text-[10px] uppercase tracking-wider">
+            <span className="text-slate-400 block text-[10px] uppercase tracking-wider mb-0.5">
               Campus / City
             </span>
             <span className="font-bold text-white text-sm truncate block">
@@ -118,6 +118,17 @@ export const Step4Preferences: React.FC = () => {
             </span>
           </div>
         </div>
+
+        {state.draft.college && (
+          <div className="pt-2 border-t border-white/[0.04]">
+            <span className="text-slate-400 block text-[10px] uppercase tracking-wider mb-0.5">
+              University / Institute
+            </span>
+            <span className="font-semibold text-slate-200 text-xs">
+              {state.draft.college}
+            </span>
+          </div>
+        )}
 
         {state.draft.bio && (
           <p className="text-xs text-slate-300 italic bg-[#0a0e18]/80 p-2.5 rounded-xl border border-white/[0.04]">
@@ -127,11 +138,11 @@ export const Step4Preferences: React.FC = () => {
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
-        {/* Vibes Tag Selector */}
-        <div className="space-y-2">
+        {/* Vibes Tag Selector in Balanced Responsive Grid */}
+        <div className="space-y-2.5">
           <div className="flex justify-between items-center">
             <label className="block text-[11px] font-semibold uppercase tracking-wider text-slate-300">
-              Select Your Vibes (1 to 5) <span className="text-[#ff385c]">*</span>
+              Select Your Campus Vibes (1 to 5) <span className="text-[#ff385c]">*</span>
             </label>
             <span
               className={clsx(
@@ -146,7 +157,7 @@ export const Step4Preferences: React.FC = () => {
           <div
             role="group"
             aria-label="Select Vibes"
-            className="flex flex-wrap gap-2 pt-1"
+            className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-1"
           >
             {POPULAR_VIBES.map((vibe) => {
               const isSelected = selectedVibes.includes(vibe.id);
@@ -157,15 +168,17 @@ export const Step4Preferences: React.FC = () => {
                   onClick={() => toggleVibe(vibe.id)}
                   aria-pressed={isSelected}
                   className={clsx(
-                    'px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 flex items-center gap-1.5 touch-target border',
+                    'px-3 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 flex items-center justify-between gap-1.5 touch-target border text-left',
                     isSelected
-                      ? 'bg-gradient-to-r from-[#ff385c] to-[#ff5a78] text-white border-transparent shadow-md shadow-[#ff385c]/30 font-semibold scale-105'
+                      ? 'bg-gradient-to-r from-[#ff385c] to-[#ff5a78] text-white border-transparent shadow-md shadow-[#ff385c]/30 font-semibold'
                       : 'bg-[#0a0e18] text-slate-300 border-slate-800 hover:border-slate-700 hover:bg-slate-800/60'
                   )}
                 >
-                  <span aria-hidden="true">{vibe.emoji}</span>
-                  <span>{vibe.label}</span>
-                  {isSelected && <Check className="w-3.5 h-3.5 ml-0.5 stroke-[2.5]" />}
+                  <span className="flex items-center gap-1.5 truncate">
+                    <span aria-hidden="true">{vibe.emoji}</span>
+                    <span className="truncate">{vibe.label}</span>
+                  </span>
+                  {isSelected && <Check className="w-3.5 h-3.5 shrink-0 stroke-[2.5]" />}
                 </button>
               );
             })}

@@ -65,7 +65,7 @@ export const Step3Location: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto">
+    <div className="w-full space-y-6">
       <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-6" noValidate>
         <div className="space-y-2">
           <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
@@ -76,28 +76,31 @@ export const Step3Location: React.FC = () => {
           </p>
         </div>
 
-        {/* State Selection */}
-        <Select
-          label="State / Union Territory"
-          placeholder="Select your State (e.g. Jharkhand, Delhi, West Bengal)"
-          required
-          options={INDIAN_STATES}
-          error={errors.state?.message}
-          value={selectedState || ''}
-          {...register('state')}
-        />
+        {/* State & City Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* State Selection */}
+          <Select
+            label="State / Union Territory"
+            placeholder="Select State"
+            required
+            options={INDIAN_STATES}
+            error={errors.state?.message}
+            value={selectedState || ''}
+            {...register('state')}
+          />
 
-        {/* Dependent City Selection */}
-        <Select
-          label="City / Metro Area"
-          placeholder={selectedState ? 'Select your City (e.g. Dumka, Durgapur, Kolkata)' : 'Please select a state first'}
-          required
-          disabled={!selectedState}
-          options={availableCities.map((c) => ({ value: c.value, label: c.label }))}
-          error={errors.city?.message}
-          value={selectedCity || ''}
-          {...register('city')}
-        />
+          {/* Dependent City Selection */}
+          <Select
+            label="City / Metro Area"
+            placeholder={selectedState ? 'Select City' : 'Choose State first'}
+            required
+            disabled={!selectedState}
+            options={availableCities.map((c) => ({ value: c.value, label: c.label }))}
+            error={errors.city?.message}
+            value={selectedCity || ''}
+            {...register('city')}
+          />
+        </div>
 
         {/* Suggested College Selection or Custom Input */}
         <div className="space-y-1.5">
@@ -115,7 +118,7 @@ export const Step3Location: React.FC = () => {
               type="text"
               placeholder="e.g. BIT Mesra, IIT Delhi, SKMU Dumka, NIT Durgapur..."
               className={clsx(
-                'w-full bg-[#0a0e18] text-slate-100 placeholder-slate-500 rounded-xl px-4 py-3 text-sm transition-all duration-200 border touch-target shadow-inner',
+                'w-full bg-[#0a0e18] text-white font-medium placeholder-slate-500 rounded-xl px-4 py-3 text-sm transition-all duration-200 border touch-target shadow-inner',
                 'focus:outline-none focus:ring-2 focus:ring-[#ff385c]/30 focus:border-[#ff385c] focus:bg-[#0c1220] border-slate-800 hover:border-slate-700'
               )}
               {...register('college')}
@@ -132,7 +135,7 @@ export const Step3Location: React.FC = () => {
               <span className="text-[11px] text-slate-400 flex items-center gap-1 font-medium">
                 <GraduationCap className="w-3.5 h-3.5 text-[#ff758c]" /> Quick pick:
               </span>
-              {suggestedColleges.slice(0, 3).map((col) => (
+              {suggestedColleges.slice(0, 4).map((col) => (
                 <button
                   key={col}
                   type="button"
@@ -171,7 +174,7 @@ export const Step3Location: React.FC = () => {
             maxLength={160}
             placeholder="Introduce yourself to future study partners, clubs, or roommates..."
             className={clsx(
-              'w-full bg-[#0a0e18] text-slate-100 placeholder-slate-500 rounded-xl px-4 py-3 text-sm transition-all duration-200 border resize-none shadow-inner',
+              'w-full bg-[#0a0e18] text-white font-medium placeholder-slate-500 rounded-xl px-4 py-3 text-sm transition-all duration-200 border resize-none shadow-inner',
               'focus:outline-none focus:ring-2 focus:ring-[#ff385c]/30 focus:border-[#ff385c] focus:bg-[#0c1220] border-slate-800 hover:border-slate-700'
             )}
             {...register('bio')}

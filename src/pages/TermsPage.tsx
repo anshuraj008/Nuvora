@@ -121,9 +121,10 @@ export const TermsPage: React.FC = () => {
               </h2>
             </div>
             <p className="text-sm leading-relaxed text-slate-300">
-              We respect your privacy. In this frontend demonstration environment, no personal data
-              is transmitted to external production servers. In production environments, your data
-              is encrypted at rest and in transit, and exact GPS coordinates are never broadcasted.
+              We respect your privacy. All user profile data and student credentials are encrypted
+              in transit and at rest using modern security standards. Your exact GPS coordinates
+              are never broadcasted to other members, and campus event grouping uses
+              privacy-preserving locality matching.
             </p>
           </section>
         </div>

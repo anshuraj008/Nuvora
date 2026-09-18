@@ -52,7 +52,7 @@ export const Step2Profile: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto">
+    <div className="w-full">
       <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-6" noValidate>
         <div className="space-y-2">
           <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
