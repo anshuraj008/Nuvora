@@ -83,6 +83,7 @@ export const Step3Location: React.FC = () => {
           required
           options={INDIAN_STATES}
           error={errors.state?.message}
+          value={selectedState || ''}
           {...register('state')}
         />
 
@@ -94,6 +95,7 @@ export const Step3Location: React.FC = () => {
           disabled={!selectedState}
           options={availableCities.map((c) => ({ value: c.value, label: c.label }))}
           error={errors.city?.message}
+          value={selectedCity || ''}
           {...register('city')}
         />
 

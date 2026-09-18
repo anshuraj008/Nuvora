@@ -65,13 +65,12 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             )}
             className={twMerge(
               clsx(
-                'w-full appearance-none bg-[#0a0e18] text-slate-100 rounded-xl px-4 py-3 pr-10 text-sm transition-all duration-200 border touch-target cursor-pointer shadow-inner',
+                'w-full appearance-none bg-[#0a0e18] text-white font-semibold rounded-xl px-4 py-3 pr-10 text-sm transition-all duration-200 border touch-target cursor-pointer shadow-inner',
                 'focus:outline-none focus:ring-2 focus:ring-[#ff385c]/30 focus:border-[#ff385c] focus:bg-[#0c1220]',
                 isInvalid
                   ? 'border-rose-500/80 bg-rose-500/[0.04] focus:ring-rose-500/30 focus:border-rose-500'
                   : 'border-slate-800 hover:border-slate-700',
                 disabled && 'opacity-50 cursor-not-allowed bg-slate-900/50',
-                !value && 'text-slate-500',
                 className
               )
             )}
@@ -81,7 +80,11 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
               {placeholder}
             </option>
             {options.map((opt) => (
-              <option key={opt.value} value={opt.value} className="bg-[#0e131f] text-slate-100 py-1">
+              <option
+                key={opt.value}
+                value={opt.value}
+                className="bg-[#0e131f] text-white font-medium py-2"
+              >
                 {opt.label}
               </option>
             ))}
@@ -91,7 +94,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             {isInvalid ? (
               <AlertCircle className="w-5 h-5 text-rose-400" aria-hidden="true" />
             ) : (
-              <ChevronDown className="w-4 h-4 text-slate-400" aria-hidden="true" />
+              <ChevronDown className="w-5 h-5 text-slate-300" aria-hidden="true" />
             )}
           </div>
         </div>
