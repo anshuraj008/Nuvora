@@ -45,16 +45,16 @@ export const Field = React.forwardRef<HTMLInputElement, FieldProps>(
         <div className="flex justify-between items-center">
           <label
             htmlFor={fieldId}
-            className="block text-xs font-semibold uppercase tracking-wider text-slate-300"
+            className="block text-[11px] font-semibold uppercase tracking-wider text-slate-300"
           >
             {label}
-            {required && <span className="text-brand-500 ml-1" aria-hidden="true">*</span>}
+            {required && <span className="text-[#ff385c] ml-1" aria-hidden="true">*</span>}
           </label>
           {charCount && (
             <span
               className={clsx(
-                'text-xs font-medium',
-                charCount.current >= charCount.max ? 'text-red-400' : 'text-slate-400'
+                'text-[11px] font-mono',
+                charCount.current >= charCount.max ? 'text-rose-400' : 'text-slate-500'
               )}
               aria-live="polite"
             >
@@ -82,14 +82,14 @@ export const Field = React.forwardRef<HTMLInputElement, FieldProps>(
             )}
             className={twMerge(
               clsx(
-                'w-full bg-[#111726] text-slate-100 placeholder-slate-500 rounded-xl px-4 py-3 text-sm transition-all duration-150 border touch-target',
-                'focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500',
+                'w-full bg-[#0a0e18] text-slate-100 placeholder-slate-500 rounded-xl px-4 py-3 text-sm transition-all duration-200 border touch-target shadow-inner',
+                'focus:outline-none focus:ring-2 focus:ring-[#ff385c]/30 focus:border-[#ff385c] focus:bg-[#0c1220]',
                 leftIcon ? 'pl-11' : 'pl-4',
                 rightAction || isInvalid || success ? 'pr-11' : 'pr-4',
                 isInvalid
-                  ? 'border-red-500/80 bg-red-500/[0.03] focus:ring-red-500 focus:border-red-500'
-                  : 'border-slate-700/70 hover:border-slate-600',
-                disabled && 'opacity-50 cursor-not-allowed bg-slate-900',
+                  ? 'border-rose-500/80 bg-rose-500/[0.04] focus:ring-rose-500/30 focus:border-rose-500'
+                  : 'border-slate-800 hover:border-slate-700',
+                disabled && 'opacity-50 cursor-not-allowed bg-slate-900/50',
                 className
               )
             )}
@@ -99,7 +99,7 @@ export const Field = React.forwardRef<HTMLInputElement, FieldProps>(
           <div className="absolute right-3.5 flex items-center space-x-1.5">
             {rightAction}
             {isInvalid && (
-              <AlertCircle className="w-5 h-5 text-red-400 animate-pulse shrink-0" aria-hidden="true" />
+              <AlertCircle className="w-5 h-5 text-rose-400 animate-pulse shrink-0" aria-hidden="true" />
             )}
             {success && !isInvalid && (
               <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" aria-hidden="true" />
@@ -108,13 +108,13 @@ export const Field = React.forwardRef<HTMLInputElement, FieldProps>(
         </div>
 
         {isInvalid && (
-          <p id={errorId} role="alert" className="text-xs font-medium text-red-400 flex items-center gap-1 mt-1">
+          <p id={errorId} role="alert" className="text-xs font-medium text-rose-400 flex items-center gap-1 mt-1">
             <span>{error}</span>
           </p>
         )}
 
         {helperText && !isInvalid && (
-          <p id={helperId} className="text-xs text-slate-400 mt-1">
+          <p id={helperId} className="text-xs text-slate-400 mt-1 leading-relaxed">
             {helperText}
           </p>
         )}

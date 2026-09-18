@@ -55,15 +55,17 @@ export const Step2Profile: React.FC = () => {
     <div className="w-full max-w-md mx-auto">
       <form onSubmit={handleSubmit(onSubmit, onError)} className="space-y-6" noValidate>
         <div className="space-y-2">
-          <h3 className="text-xl font-bold text-white">Tell us about yourself</h3>
-          <p className="text-sm text-slate-400">
-            This information will appear on your public Nuvora profile.
+          <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+            Tell us about yourself
+          </h3>
+          <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            Your name and pronouns are shown on your verified campus profile.
           </p>
         </div>
 
         {/* Full Name */}
         <Field
-          label="Full Name"
+          label="Full Legal / Preferred Name"
           type="text"
           placeholder="e.g. Jordan Taylor"
           autoComplete="name"
@@ -75,12 +77,12 @@ export const Step2Profile: React.FC = () => {
 
         {/* Age */}
         <Field
-          label="Age"
+          label="Your Age (Years)"
           type="text"
           inputMode="numeric"
           pattern="[0-9]*"
           placeholder="e.g. 20"
-          helperText="Must be 18 or older to participate in campus events."
+          helperText="Must be 18 or older for campus safety and eligibility compliance."
           required
           leftIcon={<Calendar className="w-5 h-5" />}
           error={errors.age?.message}
@@ -89,8 +91,8 @@ export const Step2Profile: React.FC = () => {
 
         {/* Pronouns Selection */}
         <div className="space-y-2">
-          <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300">
-            Pronouns <span className="text-brand-500 ml-1" aria-hidden="true">*</span>
+          <label className="block text-[11px] font-semibold uppercase tracking-wider text-slate-300">
+            Pronouns <span className="text-[#ff385c] ml-1" aria-hidden="true">*</span>
           </label>
 
           <Controller
@@ -112,10 +114,10 @@ export const Step2Profile: React.FC = () => {
                       aria-checked={isSelected}
                       onClick={() => field.onChange(option.value)}
                       className={clsx(
-                        'px-3 py-2.5 rounded-xl text-xs font-semibold transition-all border text-center touch-target',
+                        'px-3.5 py-3 rounded-xl text-xs font-semibold transition-all border text-center touch-target',
                         isSelected
-                          ? 'bg-brand-500/15 border-brand-500 text-brand-300 shadow-sm'
-                          : 'bg-[#111726] border-slate-700/80 text-slate-300 hover:border-slate-600 hover:bg-slate-800/40'
+                          ? 'bg-[#ff385c]/15 border-[#ff385c] text-[#ff758c] shadow-sm shadow-[#ff385c]/20 ring-1 ring-[#ff385c]'
+                          : 'bg-[#0a0e18] border-slate-800 text-slate-300 hover:border-slate-700 hover:bg-slate-800/50'
                       )}
                     >
                       {option.label}
@@ -127,7 +129,7 @@ export const Step2Profile: React.FC = () => {
           />
 
           {errors.pronouns?.message && (
-            <p role="alert" className="text-xs font-medium text-red-400 mt-1">
+            <p role="alert" className="text-xs font-medium text-rose-400 mt-1">
               {errors.pronouns.message}
             </p>
           )}
@@ -137,9 +139,10 @@ export const Step2Profile: React.FC = () => {
           type="submit"
           variant="primary"
           fullWidth
+          size="lg"
           rightIcon={<ArrowRight className="w-4 h-4" />}
         >
-          Continue to Location
+          Continue to Campus & Location
         </Button>
       </form>
 
@@ -158,16 +161,16 @@ export const Step2Profile: React.FC = () => {
         }
       >
         <div className="flex flex-col items-center text-center py-2 space-y-3">
-          <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center text-red-400">
-            <ShieldAlert className="w-6 h-6" />
+          <div className="w-14 h-14 rounded-2xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400">
+            <ShieldAlert className="w-7 h-7" />
           </div>
           <h4 className="text-base font-bold text-white">Age Verification Notice</h4>
           <p className="text-xs text-slate-300 leading-relaxed">
-            Nuvora is currently strictly restricted to university students and individuals aged 18
-            and older in compliance with campus community safety standards and privacy policies.
+            Nuvora is strictly limited to university students and individuals aged 18 and older in
+            strict compliance with collegiate community safety guidelines.
           </p>
           <p className="text-xs text-slate-400">
-            Please verify your age once you become eligible to join.
+            Please register once you attain the required eligibility age.
           </p>
         </div>
       </Modal>

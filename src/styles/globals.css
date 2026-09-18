@@ -17,6 +17,7 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
+    color-scheme: dark;
   }
 
   body {
@@ -24,9 +25,34 @@
     color: var(--color-text-primary);
     min-height: 100vh;
     overflow-x: hidden;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(255, 56, 92, 0.07) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.05) 0px, transparent 50%),
+      radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 28px 28px;
+    background-position: 0 0, 0 0, -1px -1px;
   }
 
-  /* Accessible focus indicators */
+  /* Custom sleek scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #080b11;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #334155;
+  }
+
+  /* Accessible high-contrast focus rings */
   *:focus-visible {
     outline: 2px solid var(--color-border-focus);
     outline-offset: 2px;
@@ -53,5 +79,30 @@
 
   .text-balance {
     text-wrap: balance;
+  }
+
+  .glass-panel {
+    background: rgba(14, 19, 31, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-card {
+    background: linear-gradient(145deg, rgba(20, 27, 45, 0.8) 0%, rgba(12, 16, 26, 0.9) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.6), 0 0 1px 1px rgba(255, 255, 255, 0.06);
+  }
+
+  .glass-card-interactive {
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .glass-card-interactive:hover {
+    border-color: rgba(255, 56, 92, 0.3);
+    box-shadow: 0 20px 40px -10px rgba(255, 56, 92, 0.12), 0 0 1px 1px rgba(255, 56, 92, 0.25);
+    transform: translateY(-2px);
   }
 }

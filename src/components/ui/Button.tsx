@@ -32,25 +32,25 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles =
-      'inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 select-none disabled:opacity-50 disabled:cursor-not-allowed touch-target active:scale-[0.98]';
+      'relative inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 select-none disabled:opacity-50 disabled:cursor-not-allowed touch-target active:scale-[0.98]';
 
     const variants = {
       primary:
-        'bg-brand-500 hover:bg-brand-600 text-white shadow-lg shadow-brand-500/25 focus-visible:outline-brand-400 active:bg-brand-700',
+        'bg-gradient-to-r from-[#ff385c] via-[#ff4d6d] to-[#ff5a78] hover:from-[#e11d48] hover:to-[#f43f5e] text-white shadow-lg shadow-[#ff385c]/25 border border-white/15 focus-visible:outline-[#ff385c]',
       secondary:
-        'bg-slate-800 hover:bg-slate-700 text-slate-100 border border-slate-700/60 focus-visible:outline-slate-400 active:bg-slate-900',
+        'bg-[#121826] hover:bg-[#1a2236] text-slate-200 border border-slate-700/80 hover:border-slate-600 focus-visible:outline-slate-400 shadow-sm',
       outline:
-        'bg-transparent hover:bg-slate-800/60 text-slate-200 border border-slate-700 hover:border-slate-600 focus-visible:outline-brand-400',
+        'bg-transparent hover:bg-slate-800/60 text-slate-200 border border-slate-700 hover:border-slate-500 focus-visible:outline-[#ff385c]',
       ghost:
-        'bg-transparent hover:bg-slate-800/50 text-slate-300 hover:text-white focus-visible:outline-brand-400',
+        'bg-transparent hover:bg-slate-800/50 text-slate-300 hover:text-white focus-visible:outline-[#ff385c]',
       danger:
-        'bg-red-500 hover:bg-red-600 text-white shadow-lg shadow-red-500/20 focus-visible:outline-red-400',
+        'bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white shadow-lg shadow-red-600/20 border border-white/10 focus-visible:outline-red-500',
     };
 
     const sizes = {
-      sm: 'text-xs px-3.5 py-2 min-h-[38px] gap-1.5',
-      md: 'text-sm px-5 py-3 min-h-[46px] gap-2 font-semibold',
-      lg: 'text-base px-6 py-3.5 min-h-[52px] gap-2.5 font-semibold',
+      sm: 'text-xs px-3.5 py-2 min-h-[38px] gap-1.5 font-medium tracking-wide',
+      md: 'text-sm px-5 py-2.5 min-h-[46px] gap-2 font-semibold tracking-wide',
+      lg: 'text-base px-6 py-3.5 min-h-[52px] gap-2.5 font-semibold tracking-wide',
     };
 
     return (

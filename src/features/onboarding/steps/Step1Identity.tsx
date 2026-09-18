@@ -125,39 +125,39 @@ export const Step1Identity: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto">
+    <div className="w-full max-w-md mx-auto space-y-6">
       {/* Demo testing banner hint */}
-      <div className="mb-5 p-3 rounded-xl bg-slate-900/90 border border-slate-800 text-xs text-slate-300 flex items-start gap-2.5">
-        <Info className="w-4 h-4 text-brand-400 shrink-0 mt-0.5" aria-hidden="true" />
+      <div className="p-3.5 rounded-2xl bg-[#090d16]/90 border border-white/[0.08] text-xs text-slate-300 flex items-start gap-3 shadow-inner">
+        <Info className="w-4 h-4 text-[#ff758c] shrink-0 mt-0.5" aria-hidden="true" />
         <div className="leading-relaxed">
-          <span className="font-semibold text-slate-200">Demo Testing Guide:</span> Demo OTP is{' '}
-          <span className="font-mono bg-brand-500/20 text-brand-300 px-1 py-0.5 rounded font-bold">
+          <span className="font-semibold text-white">Demo Testing Note:</span> Valid OTP code is{' '}
+          <span className="font-mono bg-[#ff385c]/20 text-[#ff758c] px-1.5 py-0.5 rounded font-bold border border-[#ff385c]/30">
             {DEMO_VALID_OTP}
           </span>
-          . Use <span className="font-mono text-amber-300">{DEMO_FAIL_EMAIL}</span> to test network
-          error retry.
+          . Use <span className="font-mono text-amber-300 underline">{DEMO_FAIL_EMAIL}</span> to
+          test simulated failure.
         </div>
       </div>
 
       {errorMsg && (
-        <div className="mb-5">
-          <Toast
-            type="error"
-            title="Verification Error"
-            message={errorMsg}
-            onClose={() => setErrorMsg(null)}
-            onRetry={stepMode === 'email' ? handleSubmit(onEmailSubmit) : () => onOtpSubmit()}
-            retryText="Try Again"
-          />
-        </div>
+        <Toast
+          type="error"
+          title="Verification Error"
+          message={errorMsg}
+          onClose={() => setErrorMsg(null)}
+          onRetry={stepMode === 'email' ? handleSubmit(onEmailSubmit) : () => onOtpSubmit()}
+          retryText="Try Again"
+        />
       )}
 
       {stepMode === 'email' ? (
         <form onSubmit={handleSubmit(onEmailSubmit)} className="space-y-6" noValidate>
           <div className="space-y-2">
-            <h3 className="text-xl font-bold text-white">What's your email address?</h3>
-            <p className="text-sm text-slate-400">
-              We'll send a 6-digit verification code to confirm your student/personal identity.
+            <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+              What's your student email?
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+              We'll send a 6-digit one-time code to confirm your authentic university identity.
             </p>
           </div>
 
@@ -176,8 +176,9 @@ export const Step1Identity: React.FC = () => {
             type="submit"
             variant="primary"
             fullWidth
+            size="lg"
             isLoading={isLoading}
-            loadingText="Sending Code..."
+            loadingText="Sending Verification Code..."
             rightIcon={<ArrowRight className="w-4 h-4" />}
           >
             Send Verification Code
@@ -187,21 +188,23 @@ export const Step1Identity: React.FC = () => {
         <div className="space-y-6">
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <h3 className="text-xl font-bold text-white">Enter Verification Code</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                Enter 6-Digit Code
+              </h3>
               <button
                 type="button"
                 onClick={() => {
                   setStepMode('email');
                   setErrorMsg(null);
                 }}
-                className="text-xs text-brand-400 hover:text-brand-300 inline-flex items-center gap-1 font-medium touch-target"
+                className="text-xs text-[#ff758c] hover:text-white inline-flex items-center gap-1 font-semibold touch-target transition-colors"
               >
                 <Edit2 className="w-3.5 h-3.5" />
                 Change Email
               </button>
             </div>
-            <p className="text-sm text-slate-400">
-              Sent to <span className="font-semibold text-slate-200">{state.draft.email}</span>
+            <p className="text-xs sm:text-sm text-slate-400">
+              Code dispatched to <span className="font-semibold text-slate-200 font-mono">{state.draft.email}</span>
             </p>
           </div>
 
@@ -229,16 +232,16 @@ export const Step1Identity: React.FC = () => {
                   type="button"
                   onClick={handleResendOtp}
                   disabled={isLoading}
-                  className="text-brand-400 hover:text-brand-300 font-semibold underline underline-offset-2 touch-target"
+                  className="text-[#ff758c] hover:text-white font-semibold underline underline-offset-2 touch-target"
                 >
                   Resend Code
                 </button>
               ) : (
-                <span>Resend code in {resendTimer}s</span>
+                <span className="font-mono text-slate-400">Resend code in {resendTimer}s</span>
               )}
             </div>
 
-            <span className="text-slate-500">Paste code supported</span>
+            <span className="text-[11px] text-slate-500">Supports paste (Ctrl+V)</span>
           </div>
 
           <Button
@@ -246,12 +249,13 @@ export const Step1Identity: React.FC = () => {
             onClick={() => onOtpSubmit()}
             variant="primary"
             fullWidth
+            size="lg"
             isLoading={isLoading}
             loadingText="Verifying Code..."
             disabled={otpValue.length < 6}
             leftIcon={<ShieldCheck className="w-4 h-4" />}
           >
-            Verify & Continue
+            Verify & Proceed to Profile
           </Button>
         </div>
       )}

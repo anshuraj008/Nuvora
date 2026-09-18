@@ -45,10 +45,10 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       <div className={twMerge('w-full flex flex-col space-y-1.5', containerClassName)}>
         <label
           htmlFor={selectId}
-          className="block text-xs font-semibold uppercase tracking-wider text-slate-300"
+          className="block text-[11px] font-semibold uppercase tracking-wider text-slate-300"
         >
           {label}
-          {required && <span className="text-brand-500 ml-1" aria-hidden="true">*</span>}
+          {required && <span className="text-[#ff385c] ml-1" aria-hidden="true">*</span>}
         </label>
 
         <div className="relative flex items-center">
@@ -65,23 +65,23 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
             )}
             className={twMerge(
               clsx(
-                'w-full appearance-none bg-[#111726] text-slate-100 rounded-xl px-4 py-3 pr-10 text-sm transition-all duration-150 border touch-target cursor-pointer',
-                'focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500',
+                'w-full appearance-none bg-[#0a0e18] text-slate-100 rounded-xl px-4 py-3 pr-10 text-sm transition-all duration-200 border touch-target cursor-pointer shadow-inner',
+                'focus:outline-none focus:ring-2 focus:ring-[#ff385c]/30 focus:border-[#ff385c] focus:bg-[#0c1220]',
                 isInvalid
-                  ? 'border-red-500/80 bg-red-500/[0.03] focus:ring-red-500 focus:border-red-500'
-                  : 'border-slate-700/70 hover:border-slate-600',
-                disabled && 'opacity-50 cursor-not-allowed bg-slate-900',
-                !value && 'text-slate-400',
+                  ? 'border-rose-500/80 bg-rose-500/[0.04] focus:ring-rose-500/30 focus:border-rose-500'
+                  : 'border-slate-800 hover:border-slate-700',
+                disabled && 'opacity-50 cursor-not-allowed bg-slate-900/50',
+                !value && 'text-slate-500',
                 className
               )
             )}
             {...props}
           >
-            <option value="" disabled className="bg-[#131926] text-slate-400">
+            <option value="" disabled className="bg-[#0e131f] text-slate-500">
               {placeholder}
             </option>
             {options.map((opt) => (
-              <option key={opt.value} value={opt.value} className="bg-[#131926] text-slate-100 py-1">
+              <option key={opt.value} value={opt.value} className="bg-[#0e131f] text-slate-100 py-1">
                 {opt.label}
               </option>
             ))}
@@ -89,21 +89,21 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
 
           <div className="absolute right-3.5 flex items-center pointer-events-none text-slate-400">
             {isInvalid ? (
-              <AlertCircle className="w-5 h-5 text-red-400" aria-hidden="true" />
+              <AlertCircle className="w-5 h-5 text-rose-400" aria-hidden="true" />
             ) : (
-              <ChevronDown className="w-5 h-5" aria-hidden="true" />
+              <ChevronDown className="w-4 h-4 text-slate-400" aria-hidden="true" />
             )}
           </div>
         </div>
 
         {isInvalid && (
-          <p id={errorId} role="alert" className="text-xs font-medium text-red-400 mt-1">
+          <p id={errorId} role="alert" className="text-xs font-medium text-rose-400 mt-1">
             {error}
           </p>
         )}
 
         {helperText && !isInvalid && (
-          <p id={helperId} className="text-xs text-slate-400 mt-1">
+          <p id={helperId} className="text-xs text-slate-400 mt-1 leading-relaxed">
             {helperText}
           </p>
         )}

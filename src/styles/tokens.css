@@ -1,43 +1,47 @@
 :root {
   --font-family-primary: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
-  /* Primary & Accent Palette */
-  --color-brand-primary: #ff4d67;
-  --color-brand-primary-hover: #e63956;
-  --color-brand-primary-light: rgba(255, 77, 103, 0.12);
-  --color-brand-accent: #ff8fa3;
-  --color-brand-gradient: linear-gradient(135deg, #ff4d67 0%, #ff758c 100%);
+  /* Primary Vibrant Brand Palette */
+  --color-brand-50: #fff1f2;
+  --color-brand-100: #ffe4e6;
+  --color-brand-200: #fecdd3;
+  --color-brand-300: #fda4af;
+  --color-brand-400: #fb7185;
+  --color-brand-500: #ff385c;
+  --color-brand-600: #e11d48;
+  --color-brand-700: #be123c;
+  --color-brand-800: #9f1239;
+  --color-brand-900: #881337;
   
-  /* Dark Surface Palette */
-  --color-bg-base: #0b0f19;
-  --color-bg-card: #131926;
-  --color-bg-card-hover: #182030;
-  --color-bg-input: #0f1420;
-  --color-bg-elevated: #1e2638;
+  /* Deep Luxury Dark Palette */
+  --color-bg-base: #07090e;
+  --color-bg-surface: #0e131f;
+  --color-bg-surface-elevated: #141b2d;
+  --color-bg-surface-card: rgba(18, 24, 38, 0.75);
+  --color-bg-input: #0b101b;
   
-  /* Borders */
-  --color-border-subtle: rgba(255, 255, 255, 0.08);
-  --color-border-focus: #ff4d67;
-  --color-border-error: #ef4444;
+  /* Border tokens */
+  --color-border-subtle: rgba(255, 255, 255, 0.07);
+  --color-border-medium: rgba(255, 255, 255, 0.12);
+  --color-border-focus: #ff385c;
+  --color-border-error: #f43f5e;
   
-  /* Typography */
+  /* Text tokens */
   --color-text-primary: #f8fafc;
   --color-text-secondary: #94a3b8;
   --color-text-muted: #64748b;
-  --color-text-disabled: #475569;
+  --color-text-dim: #475569;
   
-  /* Status */
-  --color-status-error: #ef4444;
-  --color-status-error-bg: rgba(239, 68, 68, 0.12);
+  /* Status tokens */
   --color-status-success: #10b981;
-  --color-status-success-bg: rgba(16, 185, 129, 0.12);
-  --color-status-info: #38bdf8;
-  --color-status-info-bg: rgba(56, 189, 248, 0.12);
+  --color-status-success-bg: rgba(16, 185, 129, 0.1);
+  --color-status-error: #f43f5e;
+  --color-status-error-bg: rgba(244, 63, 94, 0.1);
   
-  /* Shadows */
-  --shadow-glow: 0 0 25px rgba(255, 77, 103, 0.25);
-  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.35);
+  /* Ambient Glows & Shadows */
+  --shadow-glow-brand: 0 0 35px -5px rgba(255, 56, 92, 0.35);
+  --shadow-glow-card: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 1px 1px rgba(255, 255, 255, 0.08);
+  --shadow-input-focus: 0 0 0 3px rgba(255, 56, 92, 0.2);
   
-  /* Hit target minimum */
   --min-touch-target: 44px;
 }

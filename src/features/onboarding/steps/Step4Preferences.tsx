@@ -78,12 +78,12 @@ export const Step4Preferences: React.FC = () => {
   return (
     <div className="w-full max-w-md mx-auto space-y-6">
       {/* Demo helper */}
-      <div className="p-3 rounded-xl bg-slate-900/90 border border-slate-800 text-xs text-slate-300 flex items-start gap-2">
-        <Sparkles className="w-4 h-4 text-brand-400 shrink-0 mt-0.5" />
+      <div className="p-3.5 rounded-2xl bg-[#090d16]/90 border border-white/[0.08] text-xs text-slate-300 flex items-start gap-3 shadow-inner">
+        <Sparkles className="w-4 h-4 text-[#ff758c] shrink-0 mt-0.5" />
         <div className="leading-relaxed">
-          <span className="font-semibold text-slate-200">Final Step:</span> Select 1 to 5 vibes.
-          Tip: Set email to <span className="font-mono text-amber-300">{DEMO_SUBMIT_FAIL_EMAIL}</span>{' '}
-          to simulate submission error retry.
+          <span className="font-semibold text-white">Final Review:</span> Pick 1 to 5 vibes.
+          Tip: Set email to <span className="font-mono text-amber-300 underline">{DEMO_SUBMIT_FAIL_EMAIL}</span>{' '}
+          to test simulated submission error retry.
         </div>
       </div>
 
@@ -99,10 +99,10 @@ export const Step4Preferences: React.FC = () => {
       )}
 
       {/* Review Snapshot Card */}
-      <div className="bg-[#111726] border border-slate-800 rounded-2xl p-4 space-y-3">
-        <div className="flex items-center justify-between border-b border-slate-800/80 pb-2">
-          <span className="text-xs font-semibold uppercase tracking-wider text-brand-400 flex items-center gap-1.5">
-            <UserCheck className="w-3.5 h-3.5" /> Profile Snapshot
+      <div className="glass-card rounded-2xl p-4 space-y-3 border border-white/[0.08]">
+        <div className="flex items-center justify-between border-b border-white/[0.06] pb-2">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-[#ff758c] flex items-center gap-1.5">
+            <UserCheck className="w-3.5 h-3.5" /> Verified Profile Snapshot
           </span>
           <span className="text-xs text-slate-400 font-mono">
             {state.draft.pronouns || 'Not specified'}
@@ -111,22 +111,26 @@ export const Step4Preferences: React.FC = () => {
 
         <div className="grid grid-cols-2 gap-3 text-xs">
           <div>
-            <span className="text-slate-400 block text-[11px]">Full Name & Age</span>
-            <span className="font-semibold text-white">
+            <span className="text-slate-400 block text-[10px] uppercase tracking-wider">
+              Full Name & Age
+            </span>
+            <span className="font-bold text-white text-sm">
               {state.draft.fullName || 'Anonymous'} ({state.draft.age || '—'})
             </span>
           </div>
 
           <div>
-            <span className="text-slate-400 block text-[11px]">Campus / City</span>
-            <span className="font-semibold text-white truncate block">
+            <span className="text-slate-400 block text-[10px] uppercase tracking-wider">
+              Campus / City
+            </span>
+            <span className="font-bold text-white text-sm truncate block">
               {state.draft.city || '—'}, {state.draft.state || '—'}
             </span>
           </div>
         </div>
 
         {state.draft.bio && (
-          <p className="text-xs text-slate-300 italic bg-slate-900/60 p-2.5 rounded-lg border border-slate-800">
+          <p className="text-xs text-slate-300 italic bg-[#0a0e18]/80 p-2.5 rounded-xl border border-white/[0.04]">
             "{state.draft.bio}"
           </p>
         )}
@@ -136,12 +140,12 @@ export const Step4Preferences: React.FC = () => {
         {/* Vibes Tag Selector */}
         <div className="space-y-2">
           <div className="flex justify-between items-center">
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300">
-              Select Your Vibes (1 to 5) <span className="text-brand-500">*</span>
+            <label className="block text-[11px] font-semibold uppercase tracking-wider text-slate-300">
+              Select Your Vibes (1 to 5) <span className="text-[#ff385c]">*</span>
             </label>
             <span
               className={clsx(
-                'text-xs font-medium',
+                'text-xs font-mono font-medium',
                 selectedVibes.length >= 5 ? 'text-amber-400' : 'text-slate-400'
               )}
             >
@@ -163,36 +167,39 @@ export const Step4Preferences: React.FC = () => {
                   onClick={() => toggleVibe(vibe.id)}
                   aria-pressed={isSelected}
                   className={clsx(
-                    'px-3.5 py-2 rounded-xl text-xs font-medium transition-all duration-150 flex items-center gap-1.5 touch-target border',
+                    'px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 flex items-center gap-1.5 touch-target border',
                     isSelected
-                      ? 'bg-brand-500 text-white border-brand-500 shadow-md shadow-brand-500/20'
-                      : 'bg-[#111726] text-slate-300 border-slate-700/80 hover:border-slate-600 hover:bg-slate-800'
+                      ? 'bg-gradient-to-r from-[#ff385c] to-[#ff5a78] text-white border-transparent shadow-md shadow-[#ff385c]/30 font-semibold scale-105'
+                      : 'bg-[#0a0e18] text-slate-300 border-slate-800 hover:border-slate-700 hover:bg-slate-800/60'
                   )}
                 >
                   <span aria-hidden="true">{vibe.emoji}</span>
                   <span>{vibe.label}</span>
-                  {isSelected && <Check className="w-3.5 h-3.5 ml-0.5" />}
+                  {isSelected && <Check className="w-3.5 h-3.5 ml-0.5 stroke-[2.5]" />}
                 </button>
               );
             })}
           </div>
 
           {errors.vibes?.message && (
-            <p role="alert" className="text-xs font-medium text-red-400 mt-1">
+            <p role="alert" className="text-xs font-medium text-rose-400 mt-1">
               {errors.vibes.message}
             </p>
           )}
         </div>
 
         {/* Discovery Preference Toggle */}
-        <div className="p-3.5 rounded-xl bg-[#111726] border border-slate-800 flex items-center justify-between">
+        <div className="p-4 rounded-2xl bg-[#0a0e18] border border-slate-800 flex items-center justify-between shadow-inner">
           <div className="space-y-0.5 pr-3">
-            <label htmlFor="discovery-toggle" className="text-xs font-bold text-white flex items-center gap-1.5 cursor-pointer">
-              <Eye className="w-3.5 h-3.5 text-brand-400" />
-              Community Discovery
+            <label
+              htmlFor="discovery-toggle"
+              className="text-xs font-bold text-white flex items-center gap-1.5 cursor-pointer"
+            >
+              <Eye className="w-4 h-4 text-[#ff758c]" />
+              Campus Peer Discovery
             </label>
-            <p className="text-[11px] text-slate-400">
-              Allow verified students in your university to discover your profile.
+            <p className="text-[11px] text-slate-400 leading-relaxed">
+              Allow verified students in your university network to discover your profile.
             </p>
           </div>
 
@@ -201,7 +208,7 @@ export const Step4Preferences: React.FC = () => {
             type="checkbox"
             checked={allowDiscovery}
             onChange={(e) => setValue('allowDiscovery', e.target.checked)}
-            className="w-5 h-5 rounded accent-brand-500 cursor-pointer touch-target shrink-0"
+            className="w-5 h-5 rounded accent-[#ff385c] cursor-pointer touch-target shrink-0"
           />
         </div>
 
@@ -217,25 +224,28 @@ export const Step4Preferences: React.FC = () => {
                   type="checkbox"
                   checked={field.value}
                   onChange={(e) => field.onChange(e.target.checked)}
-                  className="w-5 h-5 mt-0.5 rounded accent-brand-500 cursor-pointer touch-target shrink-0"
+                  className="w-5 h-5 mt-0.5 rounded accent-[#ff385c] cursor-pointer touch-target shrink-0"
                 />
               )}
             />
-            <label htmlFor="terms-checkbox" className="text-xs text-slate-300 leading-relaxed cursor-pointer">
-              I have read and agree to the{' '}
+            <label
+              htmlFor="terms-checkbox"
+              className="text-xs text-slate-300 leading-relaxed cursor-pointer"
+            >
+              I agree to the{' '}
               <button
                 type="button"
                 onClick={() => setShowTermsModal(true)}
-                className="text-brand-400 hover:text-brand-300 underline font-semibold inline-flex items-center gap-0.5"
+                className="text-[#ff758c] hover:text-white underline font-semibold inline-flex items-center gap-0.5 transition-colors"
               >
-                <FileText className="w-3 h-3" /> Terms & Conditions
+                <FileText className="w-3.5 h-3.5" /> Terms & Conditions
               </button>{' '}
-              and community safety guidelines.
+              and campus safety guidelines.
             </label>
           </div>
 
           {errors.termsAccepted?.message && (
-            <p role="alert" className="text-xs font-medium text-red-400 mt-1">
+            <p role="alert" className="text-xs font-medium text-rose-400 mt-1">
               {errors.termsAccepted.message}
             </p>
           )}
@@ -272,7 +282,7 @@ export const Step4Preferences: React.FC = () => {
           </Button>
         }
       >
-        <div className="space-y-3 text-xs leading-relaxed text-slate-300 max-h-60 overflow-y-auto pr-2">
+        <div className="space-y-3.5 text-xs leading-relaxed text-slate-300 max-h-64 overflow-y-auto pr-2">
           <h5 className="font-bold text-white text-sm">1. Community Conduct</h5>
           <p>
             Nuvora is designed for positive and authentic campus connections. Harassment, hate

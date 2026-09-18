@@ -102,15 +102,15 @@ export const OtpInput: React.FC<OtpInputProps> = ({
           aria-label={`Digit ${index + 1} of ${length}`}
           aria-invalid={isError}
           className={clsx(
-            'w-11 h-13 sm:w-13 sm:h-15 text-center text-xl sm:text-2xl font-bold rounded-xl transition-all duration-150',
-            'bg-[#111726] border text-white touch-target',
-            'focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500',
+            'w-11 h-14 sm:w-13 sm:h-16 text-center text-xl sm:text-2xl font-bold rounded-2xl transition-all duration-200',
+            'bg-[#0a0e18] border text-white touch-target shadow-inner font-mono',
+            'focus:outline-none focus:ring-2 focus:ring-[#ff385c]/40 focus:border-[#ff385c] focus:bg-[#0c1220] focus:scale-105',
             isError
-              ? 'border-red-500 bg-red-500/10 text-red-300 focus:ring-red-500'
+              ? 'border-rose-500 bg-rose-500/10 text-rose-300 focus:ring-rose-500/40'
               : digits[index]
-              ? 'border-brand-500/60 bg-brand-500/5'
-              : 'border-slate-700 hover:border-slate-600',
-            disabled && 'opacity-50 cursor-not-allowed bg-slate-900'
+              ? 'border-[#ff385c]/60 bg-[#ff385c]/[0.06] text-white shadow-sm'
+              : 'border-slate-800 hover:border-slate-700',
+            disabled && 'opacity-50 cursor-not-allowed bg-slate-900/50'
           )}
         />
       ))}
